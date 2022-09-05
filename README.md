@@ -12,11 +12,11 @@
    <img alt="License" src="https://img.shields.io/badge/license-MIT-brightgreen" />
 </p>
 
-<h4 align="center">Status: Building</h4>
+<h4 align="center">🚧 Status: Building... 🚧</h4>
 
 ## 💻 About The Project
-[Vai na Web](https://vainaweb.com.br) movie page challenge using ReactJs and consuming TheMovieDB api, developed for learning purpose.
-<!-- You can see the demo by clicking [here](https://infoflix-hamomgs.vercel.app/). -->
+- [Vai na Web](https://vainaweb.com.br) movie page challenge using ReactJs and consuming TheMovieDB api, developed for learning purpose.
+- You can see the demo by clicking [here](https://infoflix-hamomgs.vercel.app/).
 
 <!-- ### Mobile
 
@@ -63,6 +63,7 @@ $ npm start
 - [React Router DOM](https://reactrouter.com/)
 - [Axios](https://github.com/axios/axios/)
 - [Prettier](https://prettier.io/)
+- [FontAwesome](https://fontawesome.com/)
 
 ## 📝 License
 
