@@ -69,6 +69,7 @@ export default class TvShowDetails extends Component {
       videoKey: data.videos.results[1] !== undefined ? data.videos.results[1].key || data.videos.results[0].key : '',
       genres: genres,
       runtime: convert(data.episode_run_time[0]),
+      releaseDate: data.first_air_date.split('-').reverse().join('/'),
       vote: data.vote_average.toFixed(1),
       episodes: data.number_of_episodes,
       seasons: data.number_of_seasons
@@ -87,7 +88,7 @@ export default class TvShowDetails extends Component {
   }
 
   render() {
-    const { details, videoKey, genres, runtime, vote, episodes, seasons } = this.state
+    const { details, videoKey, genres, runtime, releaseDate, vote, episodes, seasons } = this.state
 
     return (
       <S.Container id={this.props.Id}>
@@ -138,6 +139,16 @@ export default class TvShowDetails extends Component {
               {vote}
             </span>
           </S.Detail>
+
+          {details.first_air_date && 
+            <div>
+              <S.Detail>
+                <FontAwesomeIcon icon={F.faCalendar}></FontAwesomeIcon>
+                {' Release date: '}
+              <span>{releaseDate}</span>
+              </S.Detail>
+            </div>
+          }
           
           <S.Detail>
             <FontAwesomeIcon icon={F.faClapperboard}></FontAwesomeIcon>
