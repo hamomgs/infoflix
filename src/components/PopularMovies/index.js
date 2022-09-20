@@ -59,7 +59,7 @@ export default class PopularMovies extends Component {
       <div>
         <GlobalStyle overflow={modal !== 0 ? 'hidden' : 'auto'} scroll='auto' />
         <S.Header>
-          <S.Title>Tv Shows</S.Title>
+          <S.Title>Movies</S.Title>
           <S.SeeAll to='/movies'>
             See All
             <FontAwesomeIcon icon={faChevronRight}></FontAwesomeIcon>
