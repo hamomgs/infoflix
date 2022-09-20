@@ -12,7 +12,7 @@
    <img alt="License" src="https://img.shields.io/badge/license-MIT-brightgreen" />
 </p>
 
-<h4 align="center">🚧 Status: Building... 🚧</h4>
+<h4 align="center">🚧 Status: Building - responsive layout 🚧</h4>
 
 ## 💻 About The Project
 - [Vai na Web](https://vainaweb.com.br) movie page challenge using ReactJs and consuming TheMovieDB api, developed for learning purpose.
@@ -20,11 +20,11 @@
 
 <!-- ### Mobile
 
-<img src="#" alt="mobile version" width="300px" />
+<img src="#" alt="mobile version" width="300px" /> -->
 
 ### Web
 
-<img src="#" alt="web version" width="800px" /> -->
+<img src="https://user-images.githubusercontent.com/88857655/191382625-96c4aa84-3e8c-4a4f-a8ab-95a4a3684aa7.png" alt="web version" width="800px" />
 
 ## 🚀 Pre-requisites
 
@@ -64,6 +64,7 @@ $ npm start
 - [Axios](https://github.com/axios/axios/)
 - [Prettier](https://prettier.io/)
 - [FontAwesome](https://fontawesome.com/)
+- [Nuka Carousel](https://www.npmjs.com/package/nuka-carousel)
 
 ## 📝 License
 
