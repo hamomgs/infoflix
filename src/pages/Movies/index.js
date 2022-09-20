@@ -3,6 +3,8 @@ import axios from 'axios'
 import * as S from './styles.js'
 import PosterCard from '../../components/PosterCard/index.js'
 import MovieDetails from '../../components/MovieDetails/index.js'
+import Loader from '../../components/Loader/index.js'
+import { GlobalStyle } from '../../styles/GlobalStyles/styles.js'
 
 const apiURL = process.env.REACT_APP_API_URL
 const apiKey = process.env.REACT_APP_API_KEY
@@ -13,17 +15,37 @@ export default class PopularMovies extends Component {
     movies: [],
     currentPage: 1,
     modal: 0,
-    maxPages: 500
+    maxPages: 500,
+    isLoading: true
   }
 
   componentDidMount() {
     this.getMovies()
+
+    setTimeout(() => {
+      this.setState({
+        isLoading: false
+      })
+    }, 2000)
   }
 
   componentDidUpdate(_, prevState) {
-    const { currentPage } = this.state
+    const { currentPage, modal } = this.state
+    const header = document.querySelector('#header')
+    const footer = document.querySelector('#footer')
+    header.style.background = '#0F2133'
+    footer.style.position = 'initial'
+
     if (prevState.currentPage !== currentPage) {
       this.getMovies()
+    } else if (modal !== 0) {
+      window.scrollTo(0, 0)
+
+      setTimeout(() => {
+        this.setState({
+          isLoading: false
+        })
+      }, 2000)
     }
   }
 
@@ -70,16 +92,18 @@ export default class PopularMovies extends Component {
   }
 
   render() {
-    const { currentPage, movies, modal } = this.state
+    const { currentPage, movies, modal, isLoading } = this.state
 
     return (
+      isLoading ? <Loader /> :
       <S.MovieSection>
+        <GlobalStyle overflow={modal !== 0 ? 'hidden' : 'auto'} />
         <S.MoviesContainer>
           {movies.map((movie, index) => (
             <div key={index}>
               <PosterCard
                   title={movie.title}
-                  openDetails={() => {this.setState({modal: movie.id})}}
+                  openDetails={() => {this.setState({modal: movie.id, isLoading: true})}}
                   vote={movie.vote_average}
                   image={movie.image}
               />

@@ -12,24 +12,21 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   html {
-    scroll-behavior: smooth;
-  }
-  /* ::selection {
-    color: #fff;
-    background-color: #d74430;
+    scroll-behavior: ${({ scroll }) => scroll || 'smooth'};
   }
   ::-webkit-scrollbar-track {
-    background-color: #2d2d2d;
+    background-color: #020D18;
   }
   ::-webkit-scrollbar {
     width: 5px;
   }
   ::-webkit-scrollbar-thumb {
-    background: #d74430;
-  } */
-
+    background: #0F2133;
+  }
+                                             
   body {
     background: #020D18;
+    overflow: ${({ overflow }) => overflow || 'auto'};
   }
 
   img {

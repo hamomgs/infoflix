@@ -3,6 +3,8 @@ import axios from 'axios'
 import * as S from './styles.js'
 import PosterCard from '../../components/PosterCard/index.js'
 import TvShowDetails from '../../components/TvShowDetails/index.js'
+import Loader from '../../components/Loader/index.js'
+import { GlobalStyle } from '../../styles/GlobalStyles/styles.js'
 
 const apiURL = process.env.REACT_APP_API_URL
 const apiKey = process.env.REACT_APP_API_KEY
@@ -13,17 +15,34 @@ export default class PopularMovies extends Component {
     tvShows: [],
     currentPage: 1,
     modal: 0,
-    maxPages: 500
+    maxPages: 500,
+    isLoading: true
   }
 
   componentDidMount() {
     this.getMovies()
+
+    setTimeout(() => {
+      this.setState({
+        isLoading: false
+      })
+    }, 2000)
   }
 
   componentDidUpdate(_, prevState) {
-    const { currentPage } = this.state
+    console.log('a')
+    const { currentPage, modal } = this.state
+
     if (prevState.currentPage !== currentPage) {
       this.getMovies()
+    } else if (modal !== 0) {
+      window.scrollTo(0, 0)
+
+      setTimeout(() => {
+        this.setState({
+          isLoading: false
+        })
+      }, 2000)
     }
   }
 
@@ -66,6 +85,11 @@ export default class PopularMovies extends Component {
 
   handleClickNextPage = () => {
     const { currentPage, maxPages } = this.state
+    const header = document.querySelector('#header')
+    const footer = document.querySelector('#footer')
+    header.style.background = '#0F2133'
+    footer.style.position = 'initial'
+
     if(currentPage < maxPages) {
       this.setState(prevState => ({
         currentPage: prevState.currentPage + 1
@@ -75,16 +99,18 @@ export default class PopularMovies extends Component {
   }
 
   render() {
-    const { tvShows, currentPage, modal } = this.state
+    const { tvShows, currentPage, modal, isLoading } = this.state
 
     return (
+      isLoading ? <Loader /> :
       <S.TvShowSection>
+        <GlobalStyle overflow={modal !== 0 ? 'hidden' : 'auto'} />
         <S.TvShowsContainer>
           {tvShows.map((tvShow, index) => (
             <div key={index}>
               <PosterCard
                 title={tvShow.title}
-                openDetails={() => {this.setState({modal: tvShow.id})}}
+                openDetails={() => {this.setState({modal: tvShow.id, isLoading: true})}}
                 vote={tvShow.vote_average}
                 image={tvShow.image}
               />

@@ -24,7 +24,7 @@ export const DetailsBtn = styled.button`
 
 export const Figure = styled.figure`
   border-radius: 5px;
-  height: 23.7vw;
+  height: ${({ height }) => height|| '23.7vw'};
   overflow: hidden;
 `
 

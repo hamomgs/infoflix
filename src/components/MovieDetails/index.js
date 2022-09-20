@@ -65,7 +65,7 @@ export default class MovieDetails extends Component {
     
     setTimeout(() => {
       this.props.closeModal()
-    }, 500)
+    }, 400)
   }
 
   render() {
@@ -78,7 +78,7 @@ export default class MovieDetails extends Component {
           Back
         </S.BackBtn>
         <S.PosterContainer>
-          {details.backdrop_path && <S.PosterImg src={`${imageURL}${details.poster_path}`} alt={details.title} />}
+          {details.poster_path && <S.PosterImg src={`${imageURL}${details.poster_path}`} alt={details.title} />}
           <S.LinksContainer>
             <S.LinkBtn 
               href={videoKey !== '' ? `https://www.youtube.com/watch?v=${videoKey}` :
@@ -91,7 +91,7 @@ export default class MovieDetails extends Component {
               Trailer
             </S.LinkBtn>
             <S.LinkBtn 
-              href={details.homepage}
+              href={details.homepage ? details.homepage : `https://www.google.com/search?q=${details.title}`}
               target='_blank' rel='noreferrer'
             >
               <S.Icon>
@@ -151,11 +151,13 @@ export default class MovieDetails extends Component {
             </div>
           }
 
-          <S.Detail>
-            <FontAwesomeIcon icon={F.faHourglassHalf}></FontAwesomeIcon>
-            {' Runtime: '}
-            <span>{runtime}</span>
-          </S.Detail>
+          {runtime !== 'aNhr' &&
+            <S.Detail>
+              <FontAwesomeIcon icon={F.faHourglassHalf}></FontAwesomeIcon>
+              {' Runtime: '}
+              <span>{runtime}</span>
+            </S.Detail>
+          }
 
           <S.Overview>
             <FontAwesomeIcon icon={F.faFileLines}></FontAwesomeIcon>

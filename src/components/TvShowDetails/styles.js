@@ -1,14 +1,5 @@
 import styled, { keyframes } from 'styled-components'
 
-const OpenAnimation = keyframes`
-  0% {
-    transform: scale(0);
-  }
-  100% {
-    transform: scale(1);
-  }
-`
-
 const CloseAnimation = keyframes`
   0% {
     transform: scale(1);
@@ -19,7 +10,7 @@ const CloseAnimation = keyframes`
 `
 
 export const Container = styled.div`
-  position: fixed;
+  position: absolute;
   inset: 0;
   z-index: 99;
   display: flex;
@@ -29,7 +20,7 @@ export const Container = styled.div`
   padding: 2vw 2vw 2vw 15vw;
   color: #fff;
   background-color: #020D18;
-  animation: ${OpenAnimation} 0.5s ease-in-out;
+  overflow-y: auto;
 
   &.close {
     animation: ${CloseAnimation} 0.5s ease-in-out;
@@ -77,8 +68,9 @@ export const PosterContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 2vw;
-  max-width: 30vw;
+  min-width: 20vw;
   margin-top: 2vw;
+
   * {
     font-family: 'Dosis', sans-serif;
     text-transform: uppercase;
@@ -148,7 +140,7 @@ export const DetailsContainer = styled.div`
 `
 
 export const Title = styled.h1`
-  font-size: 3vw;
+  font-size: 2.5vw;
   font-family: 'Dosis', sans-serif;
   text-transform: uppercase;
 `
@@ -170,21 +162,21 @@ export const Tagline = styled.p`
 
 export const Detail = styled.p`
   font-weight: bold;
-  font-size: 1.4vw;
+  font-size: 1.2vw;
 
   span {
     font-weight: normal;
-    font-size: 1.3vw;
+    font-size: 1.1vw;
   }
 `
 
 export const Overview = styled.span`
   width: 75%;
   font-weight: bold;
-  font-size: 1.4vw;
+  font-size: 1.2vw;
 
   span {
     font-weight: normal;
-    font-size: 1.3vw;
+    font-size: 1.1vw;
   }
 `

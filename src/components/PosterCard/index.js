@@ -2,10 +2,10 @@ import React from 'react'
 import * as S from './styles.js'
 import { faStar, faPlus } from '@fortawesome/free-solid-svg-icons'
 
-export default function PosterCard({ image, openDetails, title, vote }) {
+export default function PosterCard({ image, openDetails, title, vote, height }) {
   return (
     <S.PosterCard>
-      <S.Figure>
+      <S.Figure height={height || '23.7vw'}>
         <S.MoviePoster src={image} alt={title} />
       </S.Figure>
       <S.Title>
