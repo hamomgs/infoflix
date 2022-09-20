@@ -20,6 +20,11 @@ export default class PopularMovies extends Component {
   }
 
   componentDidMount() {
+    const header = document.querySelector('#header')
+    const footer = document.querySelector('#footer')
+    header.style.background = '#0F2133'
+    footer.style.position = 'initial'
+
     this.getMovies()
 
     setTimeout(() => {
@@ -85,10 +90,6 @@ export default class PopularMovies extends Component {
 
   handleClickNextPage = () => {
     const { currentPage, maxPages } = this.state
-    const header = document.querySelector('#header')
-    const footer = document.querySelector('#footer')
-    header.style.background = '#0F2133'
-    footer.style.position = 'initial'
 
     if(currentPage < maxPages) {
       this.setState(prevState => ({
